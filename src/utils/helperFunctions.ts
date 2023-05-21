@@ -1,4 +1,4 @@
-import { TransferFunctionInput } from "control-systems-js";
+import { TransferFunctionInput, transferFunction } from "control-systems-js";
 
 // преобразует строку в массив чисел
 function parseString(arg:string):number[] {
@@ -16,9 +16,15 @@ function removeFirstElements(array:number[],element:number):number[] {
 }
 //проверяет коэффициенты числителя и знаменателя на соответствие устойчивости
 function isSupportedTF(numden:TransferFunctionInput):boolean {
+    try {
+      const tf=transferFunction(numden);
+    } catch (error) {
+      console.warn(error);
+      return false;
+      
+    }
     return numden.numerator.length>0 && numden.denominator.length>0
-    && ([...numden.numerator,...numden.denominator].every((item)=>!isNaN(item))) 
-    && numden.numerator.length<=numden.denominator.length;
+    && ([...numden.numerator,...numden.denominator].every((item)=>!isNaN(item))); 
 }
 // function getTimeRange(timeRange:):number[]{
 //     const timeSries:number[]=[];
@@ -26,7 +32,16 @@ function isSupportedTF(numden:TransferFunctionInput):boolean {
 //         timeSries.push(i);
 //     return timeSries;
 // }
+function isObjectEmpty(objectName:any) :boolean{
+  return (
+    objectName &&
+    Object.keys(objectName).length === 0 &&
+    objectName.constructor === Object
+  );
+};
 export {parseString,
     isSupportedTF,
     // getTimeRange,
-    removeFirstElements}
+    removeFirstElements,
+  isObjectEmpty
+}

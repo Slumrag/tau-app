@@ -1,0 +1,56 @@
+ul[class],
+ol[class] {
+    padding:  0  0px 0 25px;
+    margin: 0;
+}
+.PZMap {
+    padding-top: 20px;
+    // display: flex;
+   
+    row-gap: 20px;
+    border-bottom: 1px solid gray;
+    // &>ol,ul,li::after,::before{
+    //     padding: 0;
+    // }
+   
+}
+.PZcontainer{
+    display: flex;
+    align-items: start;
+    // gap:20px;
+    // align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+    // justify-content: flex-end;
+}
+.PZtable{
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: min-content auto;
+    gap: 5px;
+    & h4{
+        margin: 0;
+    }
+    // flex-direction: column;;
+    // justify-content: space-between;
+    // align-items: center;
+    
+}
+.pole,.zero{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:10px;
+    & h4{
+        
+        margin: 0;
+    }
+}
+.PZChart-wrapper{
+    display: flex;
+        position: relative;
+        min-height: 400px;
+        max-width: 500px;
+        aspect-ratio: 1 / 1;
+}
