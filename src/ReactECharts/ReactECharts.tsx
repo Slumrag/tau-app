@@ -10,14 +10,16 @@ export interface ReactEChartsProps {
   loading?: boolean;
   theme?: "light" | "dark";
 }
-
+export type ReactChart = JSX.Element & {
+  // plotType?: string,
+};
 export function ReactECharts({
   option,
   style,
   settings,
   loading,
   theme,
-}: ReactEChartsProps): JSX.Element {
+}: ReactEChartsProps): ReactChart {
   const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

@@ -1,9 +1,8 @@
 import { ReactECharts, ReactEChartsProps } from '../ReactECharts/ReactECharts';
-import { InputTF, CharTypes } from "../InputTF/InputTF";
-import { DatasetComponentOption, EChartsOption } from 'echarts';
-import React, { useState, useEffect } from 'react'
+import { EChartsOption } from 'echarts';
+
 import { TransferFunctionInput, transferFunction } from 'control-systems-js';
-import { parseString, isSupportedTF } from '../utils/helperFunctions';
+import { isSupportedTF } from '../utils/helperFunctions';
 import './NyquistPlot.scss';
 export interface NyquistPlotProps extends ReactEChartsProps {
   numden: TransferFunctionInput,
@@ -11,16 +10,7 @@ export interface NyquistPlotProps extends ReactEChartsProps {
 };
 const errMessage = 'Невозможно построить Годограф для заданной передаточной функции';
 
-function handleInput<T>(value: string, field: string, state: T, callback: (arg: T) => void): void {
-  const tmp = parseString(value).at(0);
-  callback({
-    ...state,
-    [field]: typeof (tmp) === 'number' ?
-      Math.abs(tmp) : 0
-  });
-}
-
-export function NyquistPlot({ numden, option, ...props }: NyquistPlotProps) {
+export function NyquistPlot({ numden, option, freqRange, ...props }: NyquistPlotProps) {
   const chartConfig: EChartsOption = {
     ...option,
     xAxis: [
@@ -70,9 +60,9 @@ export function NyquistPlot({ numden, option, ...props }: NyquistPlotProps) {
     },
   }
   const nyquistData = isSupportedTF(numden) ?
-    transferFunction(numden).nyquist() :
+    transferFunction(numden).nyquist(freqRange) :
     null;
-  console.log(nyquistData);
+  // console.log(nyquistData);
   const series: EChartsOption = {
     series: [
       {
@@ -92,7 +82,7 @@ export function NyquistPlot({ numden, option, ...props }: NyquistPlotProps) {
     ],
 
   }
-  console.log(nyquistData);
+  // console.log(nyquistData);
   return (
     <div className="NyquistPlot">
       {nyquistData ?

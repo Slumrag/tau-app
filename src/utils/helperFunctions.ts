@@ -39,6 +39,7 @@ function isObjectEmpty(objectName:any) :boolean{
     objectName.constructor === Object
   );
 };
+
 export {parseString,
     isSupportedTF,
     // getTimeRange,

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.scss';
-import { TransferFunctionInput, transferFunction } from 'control-systems-js';
+import { TransferFunctionInput } from 'control-systems-js';
 import { InputTF, CharTypes } from "./InputTF/InputTF";
-import { parseString, isSupportedTF, removeFirstElements } from './utils/helperFunctions';
+import { parseString, removeFirstElements } from './utils/helperFunctions';
 // import * as echarts from 'echarts';
 import { StepPlot, StepPlotProps } from './StepPlot/StepPlot';
 import { PZMap } from './PZMap/PZMap';
-import { DatasetComponentOption, EChartsOption } from 'echarts';
-import { BodePlot } from './BodePlot/BodePlot';
+import { EChartsOption } from 'echarts';
+import { BodePlot, BodePlotProps } from './BodePlot/BodePlot';
 import { NyquistPlot } from './NyquistPlot/NyquistPlot';
+import FreqInput from './FreqInput/FreqInput';
 
 
 function App() {
@@ -51,20 +51,26 @@ function App() {
         <PZMap option={{}}
           numden={numden}
         />
-        {/* <p>{num} {den}</p> */}
         <StepPlot
           option={{}}
-          loading={false}
           numden={numden}
         />
-        <BodePlot
-          option={{}}
-          numden={numden}
-        />
-        <NyquistPlot
-          option={{}}
-          numden={numden}
-        />
+        <FreqInput initialFreq={{
+          startFreq: 0.01,
+          endFreq: 10,
+          stepFreq: 2,
+        }}>
+
+          <BodePlot
+            option={{}}
+            numden={numden}
+          />
+          <NyquistPlot
+            option={{}}
+            numden={numden}
+          />
+        </FreqInput>
+
       </main>
       <footer></footer>
     </div>
