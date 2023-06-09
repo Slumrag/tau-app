@@ -84,9 +84,9 @@ export function NyquistPlot({ numden, option, freqRange, ...props }: NyquistPlot
   }
   // console.log(nyquistData);
   return (
-    <div className="NyquistPlot">
+    <>
       {nyquistData ?
-        <div className="NyquistPlot-plot">
+        <div className="NyquistPlot">
           <ReactECharts option={{
             ...chartConfig,
             ...series,
@@ -94,6 +94,6 @@ export function NyquistPlot({ numden, option, freqRange, ...props }: NyquistPlot
         </div> :
         <h4 className='err'>{errMessage}</h4>
       }
-    </div>
+    </>
   )
 }

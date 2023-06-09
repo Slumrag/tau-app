@@ -1,6 +1,8 @@
 .FreqInput{
     display: flex;
     flex-direction: column;
+    // align-items: center;
+    justify-content: center;
     // gap:10px;
 }
 .freq-input{
@@ -10,7 +12,17 @@
     justify-content: center;
 }
 .charts{
-    width: 100%;
-    
+    // width: 100%;
+    padding-top: 20px;
     display: grid;
+    grid-template-columns: minmax(300px,1fr);
+    grid-template-rows: repeat(2,1fr);
+    align-items: center;
+    justify-items: center;
+    grid-auto-rows: 100px;
+    gap: 5px;
+    // justify-items: center;
+    // &>div{
+    //     justify-items: center;
+    // }
 }

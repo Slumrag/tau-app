@@ -1,22 +1,19 @@
 .BodePlot{
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    // justify-content: center;
-    align-items: center;
-    // justify-content: center;
-    min-height: 350px;
-    max-width: 100%;
-    row-gap: 20px;
-    &-plot{
+    // padding-top: 20px;
+    // display: flex;
+    // flex-direction: column;
+    // // justify-content: center;
+    // align-items: center;
+    // // justify-content: center;
+    // min-height: 350px;
+    // max-width: 100%;
+    // row-gap: 20px;
+    // &-plot{
         display: flex;
         position: relative;
-        min-height: 400px;
-        max-width: 75%;
+        // min-height: 300px;
+        // max-width: 75%;
+        width: 100%;
         aspect-ratio: 3 / 1;
-    }
+    // }
 }
-// .freq-input{
-//     display: flex;
-//     gap: 10px;
-// }

@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, } from 'react';
 import './App.scss';
 import { TransferFunctionInput } from 'control-systems-js';
 import { InputTF, CharTypes } from "./InputTF/InputTF";
 import { parseString, removeFirstElements } from './utils/helperFunctions';
-// import * as echarts from 'echarts';
-import { StepPlot, StepPlotProps } from './StepPlot/StepPlot';
+import { StepPlot } from './StepPlot/StepPlot';
 import { PZMap } from './PZMap/PZMap';
-import { EChartsOption } from 'echarts';
-import { BodePlot, BodePlotProps } from './BodePlot/BodePlot';
+import { BodePlot, } from './BodePlot/BodePlot';
 import { NyquistPlot } from './NyquistPlot/NyquistPlot';
 import FreqInput from './FreqInput/FreqInput';
 
@@ -16,14 +14,12 @@ function App() {
   const [num, setNum] = useState<string>('1');
   const [den, setDen] = useState<string>('1 0');
 
-  // console.log(stepResult,bode)
+
   const numden: TransferFunctionInput = {
     numerator: removeFirstElements(parseString(num), 0),
     denominator: removeFirstElements(parseString(den), 0),
   };
-  // console.log(numden)
-  // console.log(isSupportedTF(numden))
-  let option: EChartsOption = {}
+
 
   const allowedCharacters = CharTypes.decimal;
   return (
@@ -55,12 +51,7 @@ function App() {
           option={{}}
           numden={numden}
         />
-        <FreqInput initialFreq={{
-          startFreq: 0.01,
-          endFreq: 10,
-          stepFreq: 2,
-        }}>
-
+        <FreqInput>
           <BodePlot
             option={{}}
             numden={numden}

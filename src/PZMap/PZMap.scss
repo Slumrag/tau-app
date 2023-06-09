@@ -14,12 +14,17 @@ ol[class] {
     // }
    
 }
+.PZData{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(2,1fr);
+}
 .PZcontainer{
     display: flex;
     align-items: start;
     // gap:20px;
     // align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     max-width: 100%;
     // justify-content: flex-end;
 }

@@ -1,7 +1,6 @@
 import './PZMap.scss';
-import React, { useEffect } from 'react'
 import { ReactECharts, ReactEChartsProps } from '../ReactECharts/ReactECharts';
-import { TransferFunctionInput, transferFunction, Complex, expressionToString } from 'control-systems-js';
+import { TransferFunctionInput, transferFunction, Complex } from 'control-systems-js';
 import { EChartsOption } from 'echarts';
 import { isSupportedTF, isObjectEmpty } from '../utils/helperFunctions';
 export interface PZMaptProps extends ReactEChartsProps {
@@ -68,31 +67,34 @@ export function PZMap({ numden, option, ...props }: PZMaptProps) {
         <div className='PZMap'>
             {!isObjectEmpty(PZData) ?
                 <div className="PZcontainer">
-                    <div className='PZtable'>
-                        {/* <div className="pole"> */}
-                        <h4>Полюса</h4>
-                        <h4>Нули</h4>
-                        <ol className="rootlist">
-                            {transferFunction(numden).pole().map((item, i) => {
-                                return <li key={i + 'p'}> {parseComplex(item)}</li>
-                            })}
-                        </ol>
-                        {/* </div> */}
-                        {/* <div className="zero"> */}
-                        <ol className="rootList">
-                            {transferFunction(numden).zero().map((item, i) => {
-                                return <li key={i + 'z'} > {parseComplex(item)}</li>
-                            })}
-                        </ol>
-                        {/* </div> */}
-                    </div>
-                    <div className="PZformula">
-                        <h5 className="PZformula-title">
-                            Передаточная Функция
-                        </h5>
-                        <p className="PZformula-content">
-                            {`W(s)=${transferFunction(numden).toString()}`}
-                        </p>
+                    <div className="PZData">
+                        <div className='PZtable'>
+                            {/* <div className="pole"> */}
+                            <h4>Полюса</h4>
+                            <h4>Нули</h4>
+                            <ol className="rootlist">
+                                {transferFunction(numden).pole().map((item, i) => {
+                                    return <li key={i + 'p'}> {parseComplex(item)}</li>
+                                })}
+                            </ol>
+                            {/* </div> */}
+                            {/* <div className="zero"> */}
+                            <ol className="rootList">
+                                {transferFunction(numden).zero().map((item, i) => {
+                                    return <li key={i + 'z'} > {parseComplex(item)}</li>
+                                })}
+                            </ol>
+                            {/* </div> */}
+                        </div>
+                        <div className="PZformula">
+                            <h4 className="PZformula-title">
+                                Передаточная Функция
+                            </h4>
+                            <p className="PZformula-content">
+                                {`W(s)=${transferFunction(numden).toString()}`}
+                            </p>
+                        </div>
+
                     </div>
                     <div className="PZChart-wrapper">
                         <ReactECharts

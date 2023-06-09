@@ -1,7 +1,7 @@
 import './BodePlot.scss';
 import { ReactChart, ReactECharts, ReactEChartsProps } from '../ReactECharts/ReactECharts';
 import { EChartsOption } from 'echarts';
-import React, { useState, useEffect } from 'react'
+// import React, { useState, useEffect } from 'react'
 import { TransferFunctionInput, transferFunction } from 'control-systems-js';
 import { isSupportedTF } from '../utils/helperFunctions';
 
@@ -135,10 +135,9 @@ export function BodePlot({ numden, option, freqRange, ...props }: BodePlotProps)
   }
   // console.log(bodeData);
   return (
-    <div className="BodePlot">
-
+    < >
       {bodeData ?
-        <div className="BodePlot-plot">
+        <div className="BodePlot">
           <ReactECharts option={{
             ...chartConfig,
             ...series,
@@ -146,6 +145,6 @@ export function BodePlot({ numden, option, freqRange, ...props }: BodePlotProps)
         </div> :
         <h4 className='err'>{errMessage}</h4>
       }
-    </div>
+    </>
   )
 }
