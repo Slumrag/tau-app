@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tau-app/static/css/main.9a2be665.css",
+    "main.js": "/tau-app/static/js/main.a5ad27b4.js",
+    "index.html": "/tau-app/index.html",
+    "main.9a2be665.css.map": "/tau-app/static/css/main.9a2be665.css.map",
+    "main.a5ad27b4.js.map": "/tau-app/static/js/main.a5ad27b4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9a2be665.css",
+    "static/js/main.a5ad27b4.js"
+  ]
+}
